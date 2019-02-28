@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.Set;
 import lab6.*;
 
-public class TrainSet implements Set<Train> {
+public class CoachSet implements Set<AbstractCoach> {
     private static final int MAX_CAPACITY = 15;
-    private Train train[] = new Train[MAX_CAPACITY];
+    private AbstractCoach abstractCoach[] = new AbstractCoach[MAX_CAPACITY];
     private int size = 0;
 
     @Override
@@ -22,7 +22,7 @@ public class TrainSet implements Set<Train> {
 
     @Override
     public boolean contains(Object o) {
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         while (trainIterator.hasNext()){
             if(o.equals(trainIterator.next())){
                 return true;
@@ -31,8 +31,8 @@ public class TrainSet implements Set<Train> {
         return false;
     }
     @Override
-    public Iterator<Train> iterator() {
-        return new Iterator<Train>() {
+    public Iterator<AbstractCoach> iterator() {
+        return new Iterator<AbstractCoach>() {
             private int index = 0;
             @Override
             public boolean hasNext() {
@@ -40,8 +40,8 @@ public class TrainSet implements Set<Train> {
             }
 
             @Override
-            public Train next() {
-                return train[index++];
+            public AbstractCoach next() {
+                return abstractCoach[index++];
             }
 
             /*@Override
@@ -53,7 +53,7 @@ public class TrainSet implements Set<Train> {
 
     @Override
     public Object[] toArray() {
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         Object[] o = new Object[size];
         int index = 0;
         while (trainIterator.hasNext()){
@@ -64,10 +64,10 @@ public class TrainSet implements Set<Train> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        if (a.length >= size && a instanceof  Train[]){
+        if (a.length >= size && a instanceof  AbstractCoach[]){
             for(int i = 0; i < a.length; i++){
                 try {
-                    a[i] = (T) train[i];
+                    a[i] = (T) abstractCoach[i];
                 }catch (IndexOutOfBoundsException e){
                     a[i]=null;
                 }
@@ -78,31 +78,32 @@ public class TrainSet implements Set<Train> {
     return a;
     }
     @Override
-    public boolean add(Train addedTrain){
-        if (addedTrain.getComfort().equals("")){
-            throw new WrongComfortExeption();
+    public boolean add(AbstractCoach addedAbstractCoach){
+//        if (addedAbstractCoach.getComfort() == null ||
+        if ("".equals(addedAbstractCoach.getComfort())){
+            throw new WrongComfortException();
         }
-        if(addedTrain.getLuggage()<0){
+        if(addedAbstractCoach.getLuggage()<0){
             throw new WrongLuggageExeption();
         }
-        if(addedTrain.getUsedSeats()<0){
+        if(addedAbstractCoach.getUsedSeats()<0){
             throw new WrongUsedSeatsExeption();
         }
-        train[size++] = addedTrain;
+        abstractCoach[size++] = addedAbstractCoach;
         return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         int index = 0;
             while (trainIterator.hasNext()){
                 if (trainIterator.next() == o){
                     for (int _index = index; _index < size; _index++){
                         try {
-                            train[_index] = train[_index + 1];
+                            abstractCoach[_index] = abstractCoach[_index + 1];
                         }catch (IndexOutOfBoundsException e){
-                            train[_index] = null;
+                            abstractCoach[_index] = null;
                         }
                     }
                     size--;
@@ -115,7 +116,7 @@ public class TrainSet implements Set<Train> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         Iterator<?> cIterator = c.iterator();
         while (cIterator.hasNext()){
             while (trainIterator.hasNext()){
@@ -129,14 +130,14 @@ public class TrainSet implements Set<Train> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Train> c) {
+    public boolean addAll(Collection<? extends AbstractCoach> c) {
         boolean tf = false;
         try {
-            for (Train addingTrain : c) {
-                if (add(addingTrain)) {
+            for (AbstractCoach addingAbstractCoach : c) {
+                if (add(addingAbstractCoach)) {
                     tf = true;
                 }
-                add(addingTrain);
+                add(addingAbstractCoach);
             }
         }catch (IndexOutOfBoundsException e){
             return false;
@@ -147,7 +148,7 @@ public class TrainSet implements Set<Train> {
     @Override
     public boolean retainAll(Collection<?> c) {
         boolean tf = false;
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         Iterator<?> cIterator = c.iterator();
         while (cIterator.hasNext()){
             while (trainIterator.hasNext()){
@@ -163,7 +164,7 @@ public class TrainSet implements Set<Train> {
     @Override
     public boolean removeAll(Collection<?> c) {
         boolean tf = false;
-        Iterator<Train> trainIterator = iterator();
+        Iterator<AbstractCoach> trainIterator = iterator();
         Iterator<?> cIterator = c.iterator();
         while (cIterator.hasNext()){
             while (trainIterator.hasNext()){
@@ -180,7 +181,7 @@ public class TrainSet implements Set<Train> {
     @Override
     public void clear() {
         for(int i = 0; i < size; i++){
-            train[i]=null;
+            abstractCoach[i]=null;
         }
     }
 }

@@ -1,11 +1,11 @@
 package lab6;
 
-public class Train {
+public class AbstractCoach {
     private int usedSeats;
     private String comfort;
     private int luggage;
 
-    public Train(int usedSeats, int luggage, String comfort) {
+    public AbstractCoach(int usedSeats, int luggage, String comfort) {
         this.usedSeats = usedSeats;
         this.luggage = luggage;
         this.comfort = comfort;

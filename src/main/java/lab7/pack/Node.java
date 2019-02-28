@@ -1,9 +1,9 @@
 package lab7.pack;
-import lab6.Train;
+import lab6.AbstractCoach;
 
 public class Node {
     private Node next;
-    private Train data;
+    private AbstractCoach data;
     private Node previous;
     public Node getNext() {
         return next;
@@ -21,11 +21,11 @@ public class Node {
         this.previous = previous;
     }
 
-    public Train getData() {
+    public AbstractCoach getData() {
         return data;
     }
 
-    public void setData(Train data) {
+    public void setData(AbstractCoach data) {
         this.data = data;
     }
 }

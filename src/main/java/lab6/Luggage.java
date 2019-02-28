@@ -1,6 +1,6 @@
 package lab6;
 
-public class Luggage extends Train {
+public class Luggage extends AbstractCoach {
     public Luggage() {
         super(0, (int) ((30 + Math.random() * 26) * (1 + Math.random() * 2)), "Not Available");
     }
