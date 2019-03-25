@@ -1,6 +1,8 @@
 package lab6;
 
-public class Train {
+import java.io.Serializable;
+
+public class Train implements Serializable {
     private int usedSeats;
     private String comfort;
     private int luggage;
@@ -25,7 +27,7 @@ public class Train {
 
     @Override
     public String toString() {
-        String string = "Used Seats: " + getUsedSeats() + "\nLuggage: " + getLuggage() + "\nComfort: " + getComfort();
+        String string = "Used Seats: " + getUsedSeats() + "\nLuggage: " + getLuggage() + "\nComfort: " + getComfort()+"\n";
         return string;
     }
 }

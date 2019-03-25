@@ -1,11 +1,12 @@
 package lab7;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 import lab6.*;
 
-public class TrainSet implements Set<Train> {
+public class TrainSet implements Set<Train>, Serializable {
     private static final int MAX_CAPACITY = 15;
     private Train train[] = new Train[MAX_CAPACITY];
     private int size = 0;
