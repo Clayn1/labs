@@ -1,7 +1,7 @@
 package patterns.lab1.composite;
 
 public class OperationSymbol implements Expression{
-    private static final String OPERATION_SYMBOLS = "+-/*";
+    public static final String OPERATION_SYMBOLS = "+-/*";
     private char symbol;
 
     public OperationSymbol(char symbol) {
@@ -14,5 +14,13 @@ public class OperationSymbol implements Expression{
     @Override
     public String getView() {
         return ""+symbol;
+    }
+    public Expression getContent(){
+        return new OperationSymbol(symbol);
+    }
+
+    @Override
+    public Expression getContent(int i) {
+        return new OperationSymbol(symbol);
     }
 }

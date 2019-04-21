@@ -1,7 +1,7 @@
 package patterns.lab1.composite;
 
 public class Constant extends SimpleExpression{
-    private double number;
+    private int number;
 
     public Constant(int number) {
         this.number = number;
@@ -10,5 +10,14 @@ public class Constant extends SimpleExpression{
     @Override
     public String getView() {
         return ""+number;
+    }
+
+    public Expression getContent(){
+        return new Constant(number);
+    }
+
+    @Override
+    public Expression getContent(int i) {
+        return new Constant(number);
     }
 }

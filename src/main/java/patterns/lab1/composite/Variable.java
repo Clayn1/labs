@@ -14,4 +14,13 @@ public class Variable extends SimpleExpression {
     public String getView() {
         return varName;
     }
+
+    public Expression getContent(){
+        return new Variable(varName);
+    }
+
+    @Override
+    public Expression getContent(int i) {
+        return new Variable(varName);
+    }
 }
