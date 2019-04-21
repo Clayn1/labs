@@ -28,11 +28,17 @@ public class Main {
         ComplexExpression forthComplexExpression = new ComplexExpression(fifthSimpleExpression, forthExpressionOperationSymbol, thirdComplexExpression);
         System.out.println(forthComplexExpression.getView());
 
+        OperationSymbol fifthExpressionOperationSymbol = new OperationSymbol('-');
+        SimpleExpression sixthSimpleExpression = new Variable("L");
+
+        ComplexExpression fifthComplexExpression = new ComplexExpression(forthComplexExpression, fifthExpressionOperationSymbol, sixthSimpleExpression);
+        System.out.println(fifthComplexExpression.getView());
+
         //System.out.println(Splitter.splitExpression(forthComplexExpression.getView()));
         //System.out.println(Splitter.splitExpression("(z/(2+t))/((2.0+var)*(x/y))"));
         System.out.println(forthComplexExpression.getContent().getView());
 
-        JFrameOutput jFrameOutput = new JFrameOutput(forthComplexExpression);
+        JFrameOutput jFrameOutput = new JFrameOutput(fifthComplexExpression);
         jFrameOutput.placeInJFrame();
     }
 }
