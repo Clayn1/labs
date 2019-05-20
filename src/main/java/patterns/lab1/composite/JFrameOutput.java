@@ -6,7 +6,13 @@ import java.util.Arrays;
 
 public class JFrameOutput {
     private Expression expressionList;
-    JFrame jFrame = new JFrame();
+    JFrame jFrame = new JFrame() /*{
+        @Override
+        public void paint(Graphics g) {
+            super.paint(g);
+            g.drawLine(0, 0, 100, 100);
+        }
+    }*/;
     Font font = new Font("Serif", Font.BOLD | Font.ITALIC, 36);
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 

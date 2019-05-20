@@ -36,7 +36,7 @@ public class Main {
 
         //System.out.println(Splitter.splitExpression(forthComplexExpression.getView()));
         //System.out.println(Splitter.splitExpression("(z/(2+t))/((2.0+var)*(x/y))"));
-        System.out.println(forthComplexExpression.getContent().getView());
+        System.out.println(fifthComplexExpression.getContent().getView());
 
         JFrameOutput jFrameOutput = new JFrameOutput(fifthComplexExpression);
         jFrameOutput.placeInJFrame();
