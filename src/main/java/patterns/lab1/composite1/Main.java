@@ -1,21 +1,21 @@
 package patterns.lab1.composite1;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.stream.Stream;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
-        String path = "D:\\Java Projects\\JavaProj\\src\\main\\java\\patterns\\lab1\\composite1\\Folder1\\";
-        Stream<Path> stream = Files.walk(Paths.get(path));
-        stream.forEach(System.out::println);
-        ArrayList arrayList = new ArrayList();
-        ArrayList arrayListFiles = new ArrayList();
+    public static void main(String[] args) {
+        ExecutableFile firstFolderFile1 = new ExecutableFile("firstFolderFile1",15);
+        ExecutableFile firstFolderFile2 = new ExecutableFile("firstFolderFile2",35);
+
+        Folder folder1 = new Folder("folder1",firstFolderFile1,firstFolderFile2);
+
+        ExecutableFile secondFolderFile1 = new ExecutableFile("secondFolderFile1",87);
+        ExecutableFile secondFolderFile2 = new ExecutableFile("secondFolderFile2",156);
+
+        Folder folder2 = new Folder("folder2",folder1,secondFolderFile1, secondFolderFile2);
+
+        ExecutableFile thirdFolderFile1 = new ExecutableFile("thirdFolderFile1",200);
+
+        Folder folder3 = new Folder("folder3",folder2,thirdFolderFile1);
+
+        System.out.println(folder3.getView());
     }
-
 }
-
